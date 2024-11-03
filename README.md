@@ -20,6 +20,9 @@ import { URLParamsHandler } from '@rnacanvas/code.url-params';
 The `URLParamsHandler` class handles URL parameters for a target RNAcanvas app
 (see [@rnacanvas/app-object](https://pzhaojohnson.github.io/rnacanvas.app-object/)).
 
+The below example draws a structure specified in dot-bracket notation
+using the `sequence` and `dot_bracket` URL parameters.
+
 ```javascript
 targetApp; // an RNAcanvas app object
 
@@ -35,7 +38,7 @@ urlParamsHander.handle(url.searchParams);
 Schemas can also be drawn using the `schema` URL parameter.
 
 ```javascript
-// the schema to be drawn is accessible at this URL
+// the schema to be drawn is to be accessed at this URL
 var schemaURL = 'https://www.ebi.ac.uk/Tools/services/rest/r2dt/result/r2dt-R20240905-135809-0737-54467708-p1m/json';
 
 var url = new URL(`https://code.rnacanvas.app?schema=${schemaURL}`);
