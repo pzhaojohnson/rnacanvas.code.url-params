@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 
-import { URLParamsHandlers } from './URLParamsHandler';
+import { URLParamsHandler } from './URLParamsHandler';
 
 describe('`class URLParamsHandler`', () => {
   test('`async handle()`', async () => {
     let targetApp = new AppMock();
-    let urlParamsHandler = new URLParamsHandlers(targetApp);
+    let urlParamsHandler = new URLParamsHandler(targetApp);
 
     // no URL parameters
     await urlParamsHandler.handle((new URL('https://code.rnacanvas.app')).searchParams);

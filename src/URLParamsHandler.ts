@@ -3,7 +3,7 @@ import { isURL } from '@rnacanvas/utilities';
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
-export class URLParamsHandlers {
+export class URLParamsHandler {
   #targetApp;
 
   constructor(targetApp: App) {

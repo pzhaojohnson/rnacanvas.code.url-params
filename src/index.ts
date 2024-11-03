@@ -1,2 +1,2 @@
-import { URLParamsHandlers } from './URLParamsHandler';
-export { URLParamsHandlers };
+import { URLParamsHandler } from './URLParamsHandler';
+export { URLParamsHandler };
