@@ -28,6 +28,6 @@ var urlParamsHandler = new URLParamsHandler(targetApp);
 // a URL specifying a structure to be drawn with dot-bracket notation
 var url = new URL('https://code.rnacanvas.app?sequence=GCGCAAAAGCGC&dot_bracket=((((....))))');
 
-// draws the specified dot-bracket structure in the target app
+// draws the specified structure in the target app
 urlParamsHander.handle(url.searchParams);
 ```
