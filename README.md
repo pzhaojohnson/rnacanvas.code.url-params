@@ -15,7 +15,7 @@ All exports of this package can be accessed as named imports.
 import { URLParamsHandler } from '@rnacanvas/code.url-params';
 ```
 
-## `URLParamsHandler`
+## `class URLParamsHandler`
 
 The `URLParamsHandler` class handles URL parameters for a target RNAcanvas app
 (see [@rnacanvas/app-object](https://pzhaojohnson.github.io/rnacanvas.app-object/)).
