@@ -3,10 +3,10 @@ import { isURL } from '@rnacanvas/utilities';
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
-export class URLParamsHandler {
+export class URLParamsHandler<B> {
   #targetApp;
 
-  constructor(targetApp: App) {
+  constructor(targetApp: App<B>) {
     this.#targetApp = targetApp;
   }
 
@@ -16,6 +16,19 @@ export class URLParamsHandler {
 
     if (sequence) {
       this.#targetApp.drawDotBracket(sequence, dotBracket ?? '');
+
+      let bases = [...this.#targetApp.drawing.bases];
+
+      bases.slice(0, bases.length - 10).forEach((b, i) => {
+        let p = i + 1;
+        p % 10 == 0 ? this.#targetApp.drawing.number(b, p) : {}
+      });
+
+      if (bases.length > 0) {
+        this.#targetApp.drawing.number(bases[0], 1);
+        this.#targetApp.drawing.number(bases[bases.length - 1], bases.length);
+      };
+
       this.#targetApp.drawing.setPadding(1000);
       this.#targetApp.drawingView.fitToContent();
     }
@@ -41,7 +54,7 @@ export class URLParamsHandler {
   }
 }
 
-interface App {
+interface App<B> {
   drawDotBracket(seq: string, dotBracket: string): void;
 
   drawSchema<S>(schema: S): void;
@@ -52,6 +65,18 @@ interface App {
      * ensures that it is big enough to encompass a drawn structure.
      */
     setPadding(padding: number): void;
+
+    /**
+     * All bases in the drawing.
+     *
+     * The ordering of bases in this iterable is the ordering of bases in the drawing.
+     */
+    readonly bases: Iterable<B>;
+
+    /**
+     * Numbers the specified base the specified number in the drawing.
+     */
+    number(b: B, n: number): void;
   }
 
   drawingView: {

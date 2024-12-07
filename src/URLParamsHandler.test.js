@@ -71,6 +71,10 @@ class AppMock {
 
   drawing = {
     setPadding: jest.fn(),
+
+    bases: [],
+
+    number: () => {},
   };
 
   drawingView = {
