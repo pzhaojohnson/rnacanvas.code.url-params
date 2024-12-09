@@ -1,6 +1,6 @@
 {
   "name": "@rnacanvas/code.url-params",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Handling of URL parameters",
   "repository": {
     "type": "git",

@@ -26,6 +26,9 @@ export class URLParamsHandler<B> {
 
       if (bases.length > 0) {
         this.#targetApp.drawing.number(bases[0], 1);
+      }
+
+      if (bases.length >= 4) {
         this.#targetApp.drawing.number(bases[bases.length - 1], bases.length);
       };
 
