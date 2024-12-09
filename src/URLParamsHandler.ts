@@ -19,9 +19,9 @@ export class URLParamsHandler<B> {
 
       let bases = [...this.#targetApp.drawing.bases];
 
-      bases.slice(0, bases.length - 10).forEach((b, i) => {
+      bases.slice(0, bases.length - 20).forEach((b, i) => {
         let p = i + 1;
-        p % 10 == 0 ? this.#targetApp.drawing.number(b, p) : {}
+        p % 20 == 0 ? this.#targetApp.drawing.number(b, p) : {}
       });
 
       if (bases.length > 0) {
