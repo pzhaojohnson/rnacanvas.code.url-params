@@ -1,13 +1,21 @@
+import type { App } from './App';
+
 import { isURL } from '@rnacanvas/utilities';
+
+import { ThemeHandler } from './ThemeHandler';
 
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
-export class URLParamsHandler<B> {
+export class URLParamsHandler {
   #targetApp;
 
-  constructor(targetApp: App<B>) {
+  #themeHandler;
+
+  constructor(targetApp: App) {
     this.#targetApp = targetApp;
+
+    this.#themeHandler = new ThemeHandler(targetApp);
   }
 
   async handle(urlParams: URLSearchParams) {
@@ -32,6 +40,8 @@ export class URLParamsHandler<B> {
         this.#targetApp.drawing.number(bases[bases.length - 1], bases.length);
       };
 
+      this.#themeHandler.handle(urlParams);
+
       this.#targetApp.drawing.setPadding(1000);
       this.#targetApp.drawingView.fitToContent();
     }
@@ -54,39 +64,5 @@ export class URLParamsHandler<B> {
         }
       }
     }
-  }
-}
-
-interface App<B> {
-  drawDotBracket(seq: string, dotBracket: string): void;
-
-  drawSchema<S>(schema: S): void;
-
-  drawing: {
-    /**
-     * Setting the padding of a drawing
-     * ensures that it is big enough to encompass a drawn structure.
-     */
-    setPadding(padding: number): void;
-
-    /**
-     * All bases in the drawing.
-     *
-     * The ordering of bases in this iterable is the ordering of bases in the drawing.
-     */
-    readonly bases: Iterable<B>;
-
-    /**
-     * Numbers the specified base the specified number in the drawing.
-     */
-    number(b: B, n: number): void;
-  }
-
-  drawingView: {
-    /**
-     * Centers the user's view of the drawing on the drawn structure
-     * and zooms out/in enough so that the user's view of the drawing closely fits the drawn structure.
-     */
-    fitToContent(): void;
   }
 }
