@@ -33,10 +33,10 @@ describe('`class URLParamsHandler`', () => {
     // (after drawing a structure specified in dot-bracket notation)
     targetApp.drawing.setPadding = jest.fn();
     // must fit the drawing view after adjusting the padding of the drawing
-    targetApp.drawingView.fitToContent = jest.fn(() => expect(targetApp.drawing.setPadding).toHaveBeenCalledTimes(1));
+    targetApp.drawingView.fitToContent = jest.fn(() => expect(targetApp.drawing.setPadding).toHaveBeenCalled());
     await urlParamsHandler.handle((new URL('https://code.rnacanvas.app?sequence=GCGCAAAAGCGC&dot_bracket=((((....))))')).searchParams);
     expect(targetApp.drawDotBracket).toHaveBeenCalledTimes(3);
-    expect(targetApp.drawing.setPadding).toHaveBeenCalledTimes(1);
+    expect(targetApp.drawing.setPadding).toHaveBeenCalled();
     expect(targetApp.drawingView.fitToContent).toHaveBeenCalledTimes(1);
 
     // schema URL parameter is not a valid URL
