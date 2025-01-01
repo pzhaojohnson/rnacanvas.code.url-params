@@ -25,9 +25,6 @@ export class URLParamsHandler {
     if (sequence) {
       this.#targetApp.drawDotBracket(sequence, dotBracket ?? '');
 
-      // having positive padding allows base numberings to be positioned more accurately
-      this.#targetApp.drawing.setPadding(1000);
-
       let bases = [...this.#targetApp.drawing.bases];
 
       bases.slice(0, bases.length - 20).forEach((b, i) => {
