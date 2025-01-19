@@ -7,12 +7,12 @@ import { ThemeHandler } from './ThemeHandler';
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
-export class URLParamsHandler {
+export class URLParamsHandler<Schema> {
   #targetApp;
 
   #themeHandler;
 
-  constructor(targetApp: App) {
+  constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
 
     this.#themeHandler = new ThemeHandler(targetApp);

@@ -1,9 +1,9 @@
 import type { BasePair } from '@rnacanvas/draw.bases';
 
-export interface App {
+export interface App<Schema> {
   drawDotBracket(seq: string, dotBracket: string): void;
 
-  drawSchema<S>(schema: S): void;
+  drawSchema(schema: Schema): void;
 
   drawing: {
     /**

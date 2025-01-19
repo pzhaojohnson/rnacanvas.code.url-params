@@ -5,10 +5,10 @@ import { BasePair } from '@rnacanvas/draw.bases';
 /**
  * Handles the `theme` URL parameter.
  */
-export class ThemeHandler {
+export class ThemeHandler<Schema> {
   #targetApp;
 
-  constructor(targetApp: App) {
+  constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
   }
 
