@@ -35,6 +35,17 @@ var url = new URL('https://code.rnacanvas.app?sequence=GCGCAAAAGCGC&dot_bracket=
 urlParamsHander.handle(url.searchParams);
 ```
 
+CT files can be drawn using the `ct` URL parameter.
+
+```javascript
+// the URL of a CT file produced by UNAfold (formerly "mfold")
+var ctFileURL = 'https://www.unafold.org/results/21/25Feb08-21-00-14/25Feb08-21-00-14_1.ct';
+
+var url = new URL(`https://code.rnacanvas.app?ct=${ctFileURL}`;
+
+urlParamsHandler.handle(url.searchParams);
+```
+
 Schemas can also be drawn using the `schema` URL parameter.
 
 ```javascript
