@@ -1,5 +1,7 @@
 import type { App } from './App';
 
+import { CTHandler } from './CTHandler';
+
 import { isURL } from '@rnacanvas/utilities';
 
 import { ThemeHandler } from './ThemeHandler';
@@ -10,15 +12,21 @@ import { ThemeHandler } from './ThemeHandler';
 export class URLParamsHandler<Schema> {
   #targetApp;
 
+  #ctHandler;
+
   #themeHandler;
 
   constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
 
+    this.#ctHandler = new CTHandler(targetApp);
+
     this.#themeHandler = new ThemeHandler(targetApp);
   }
 
   async handle(urlParams: URLSearchParams) {
+    this.#ctHandler.handle(urlParams);
+
     let sequence = urlParams.get('sequence');
     let dotBracket = urlParams.get('dot_bracket');
 

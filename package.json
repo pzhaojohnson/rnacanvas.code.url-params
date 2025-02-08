@@ -1,6 +1,6 @@
 {
   "name": "@rnacanvas/code.url-params",
-  "version": "5.0.4",
+  "version": "6.0.0",
   "description": "Handling of URL parameters",
   "repository": {
     "type": "git",
@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@rnacanvas/draw.bases": "^9.2.0",
-    "@rnacanvas/utilities": "^4.1.0"
+    "@rnacanvas/utilities": "^5.2.0"
   }
 }

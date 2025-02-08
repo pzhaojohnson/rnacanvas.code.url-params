@@ -3,6 +3,15 @@ import type { BasePair } from '@rnacanvas/draw.bases';
 export interface App<Schema> {
   drawDotBracket(seq: string, dotBracket: string): void;
 
+  /**
+   * Draws the structure specified by the provided CT string in the drawing of the app.
+   *
+   * A CT string could be the text contents of a CT file, for example.
+   *
+   * Throws if unable to parse the CT string.
+   */
+  drawCT(ctString: string): void | never;
+
   drawSchema(schema: Schema): void;
 
   drawing: {
