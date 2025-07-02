@@ -1,4 +1,6 @@
-import type { BasePair } from '@rnacanvas/draw.bases';
+import type { Nucleobase } from './Nucleobase';
+
+import type { Outline } from './Outline';
 
 export interface App<Schema> {
   drawDotBracket(seq: string, dotBracket: string): void;
@@ -29,6 +31,11 @@ export interface App<Schema> {
     readonly bases: Iterable<Nucleobase>;
 
     /**
+     * Outlines the specified base and returns the outline that was added to the drawing.
+     */
+    outline(b: Nucleobase): Outline;
+
+    /**
      * Numbers the specified base the specified number in the drawing.
      */
     number(b: Nucleobase, n: number): void;
@@ -44,8 +51,6 @@ export interface App<Schema> {
     fitToContent(): void;
   }
 }
-
-type Nucleobase = InstanceType<typeof BasePair>['base1'];
 
 interface SecondaryBond {
   readonly base1: Nucleobase;

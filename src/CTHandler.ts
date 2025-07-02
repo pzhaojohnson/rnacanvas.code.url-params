@@ -2,15 +2,21 @@ import type { App } from './App';
 
 import { isURL } from '@rnacanvas/utilities';
 
+import { DataHandler } from './DataHandler';
+
 import { ThemeHandler } from './ThemeHandler';
 
 export class CTHandler<Schema> {
   #targetApp;
 
+  #dataHandler;
+
   #themeHandler;
 
   constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
+
+    this.#dataHandler = new DataHandler(targetApp);
 
     this.#themeHandler = new ThemeHandler(targetApp);
   }
@@ -30,6 +36,9 @@ export class CTHandler<Schema> {
       let ctString = await response.text();
 
       this.#targetApp.drawCT(ctString);
+
+      // color according to data after drawing the structure
+      this.#dataHandler.handle(urlParams);
 
       // apply any themes after drawing the structure
       this.#themeHandler.handle(urlParams);

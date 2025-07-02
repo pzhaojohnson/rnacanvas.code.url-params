@@ -4,6 +4,8 @@ import { CTHandler } from './CTHandler';
 
 import { isURL } from '@rnacanvas/utilities';
 
+import { DataHandler } from './DataHandler';
+
 import { ThemeHandler } from './ThemeHandler';
 
 /**
@@ -14,12 +16,16 @@ export class URLParamsHandler<Schema> {
 
   #ctHandler;
 
+  #dataHandler;
+
   #themeHandler;
 
   constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
 
     this.#ctHandler = new CTHandler(targetApp);
+
+    this.#dataHandler = new DataHandler(targetApp);
 
     this.#themeHandler = new ThemeHandler(targetApp);
   }
@@ -47,6 +53,9 @@ export class URLParamsHandler<Schema> {
       if (bases.length >= 4) {
         this.#targetApp.drawing.number(bases[bases.length - 1], bases.length);
       };
+
+      // color according to data after drawing the structure
+      this.#dataHandler.handle(urlParams);
 
       this.#themeHandler.handle(urlParams);
 
