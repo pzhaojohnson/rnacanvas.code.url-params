@@ -46,7 +46,7 @@ export class ColorGradient {
     let luminance = 50;
 
     if (this.#descriptor === 'RNAfold') {
-      luminance = 50;
+      luminance = 40;
     }
 
     if (this.#descriptor === 'red') {
