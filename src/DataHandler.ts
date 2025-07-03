@@ -24,8 +24,8 @@ export class DataHandler<Schema> {
 
     let data = parseData(dataParam);
 
-    let minDatum = min(data);
-    let maxDatum = max(data);
+    let dataMin = params.has('data_min') ? Number.parseFloat(params.get('data_min') ?? '') : min(data);
+    let dataMax = params.has('data_max') ? Number.parseFloat(params.get('data_max') ?? '') : max(data);
 
     let colorGradient = new ColorGradient(
       params.get('color_gradient')?.toLowerCase() === 'rnafold' ? 'RNAfold' : 'red',
@@ -37,7 +37,7 @@ export class DataHandler<Schema> {
     let allBases = [...this.#targetApp.drawing.bases];
 
     data.forEach((datum, i) => {
-      let color = colorGradient.at((datum - minDatum) / (maxDatum - minDatum));
+      let color = colorGradient.at((datum - dataMin) / (dataMax - dataMin));
 
       let b: Nucleobase | undefined = allBases[i];
 
