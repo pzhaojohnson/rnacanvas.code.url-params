@@ -50,6 +50,14 @@ export interface App<Schema> {
      */
     fitToContent(): void;
   }
+
+  /**
+   * Includes things like the Toolbar and floating buttons.
+   */
+  peripheralUI: {
+    hide(): void;
+    show(): void;
+  }
 }
 
 interface SecondaryBond {

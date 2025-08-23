@@ -8,6 +8,8 @@ import { DataHandler } from './DataHandler';
 
 import { ThemeHandler } from './ThemeHandler';
 
+import { PeripheralUIHandler } from './PeripheralUIHandler';
+
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
@@ -20,6 +22,8 @@ export class URLParamsHandler<Schema> {
 
   #themeHandler;
 
+  #peripheralUIHandler;
+
   constructor(targetApp: App<Schema>) {
     this.#targetApp = targetApp;
 
@@ -28,10 +32,13 @@ export class URLParamsHandler<Schema> {
     this.#dataHandler = new DataHandler(targetApp);
 
     this.#themeHandler = new ThemeHandler(targetApp);
+
+    this.#peripheralUIHandler = new PeripheralUIHandler(targetApp);
   }
 
   async handle(urlParams: URLSearchParams) {
     this.#ctHandler.handle(urlParams);
+    this.#peripheralUIHandler.handle(urlParams);
 
     let sequence = urlParams.get('sequence');
     let dotBracket = urlParams.get('dot_bracket');
