@@ -8,8 +8,12 @@ export class PeripheralUIHandler<Schema> {
   }
 
   async handle(urlParams: URLSearchParams) {
-    if (urlParams.get('peripheral_ui')?.toLowerCase() === 'none') {
+    let peripheralUI = urlParams.get('peripheral_ui')?.toLowerCase();
+
+    if (peripheralUI === 'none') {
       this.#targetApp.peripheralUI.hide();
+    } else if (peripheralUI === 'minimal') {
+      this.#targetApp.peripheralUI.showMinimal();
     }
   }
 }

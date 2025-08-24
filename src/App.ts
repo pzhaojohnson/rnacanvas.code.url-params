@@ -57,6 +57,8 @@ export interface App<Schema> {
   peripheralUI: {
     hide(): void;
     show(): void;
+
+    showMinimal(): void;
   }
 }
 
