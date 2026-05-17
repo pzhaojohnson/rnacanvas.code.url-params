@@ -80,4 +80,18 @@ class AppMock {
   drawingView = {
     fitToContent: jest.fn(),
   };
+
+  peripheralUI = {
+    show: () => {},
+    hide: () => {},
+
+    showMinimal: () => {},
+  };
+
+  startPage = {
+    open: () => {},
+    close: () => {},
+
+    isOpen: () => false,
+  };
 }

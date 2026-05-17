@@ -60,6 +60,16 @@ export interface App<Schema> {
 
     showMinimal(): void;
   }
+
+  /**
+   * The Start page of the app.
+   */
+  readonly startPage: {
+    open(): void;
+    close(): void;
+
+    isOpen(): boolean;
+  }
 }
 
 interface SecondaryBond {

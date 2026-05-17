@@ -10,6 +10,8 @@ import { ThemeHandler } from './ThemeHandler';
 
 import { PeripheralUIHandler } from './PeripheralUIHandler';
 
+import { isTruthy } from '@rnacanvas/value-check';
+
 /**
  * A URL parameters handler for a target RNAcanvas app.
  */
@@ -43,6 +45,17 @@ export class URLParamsHandler<Schema> {
     let sequence = urlParams.get('sequence');
     let dotBracket = urlParams.get('dot_bracket');
 
+    let ct = urlParams.get('ct');
+
+    let schema = urlParams.get('schema');
+
+    // if nothing is to be drawn
+    if ([sequence, dotBracket, ct, schema].filter(isTruthy).length == 0) {
+      this.#targetApp.startPage.open();
+
+      this.#targetApp.peripheralUI.hide();
+    }
+
     if (sequence) {
       this.#targetApp.drawDotBracket(sequence, dotBracket ?? '');
 
@@ -69,8 +82,6 @@ export class URLParamsHandler<Schema> {
       this.#targetApp.drawing.setPadding(1000);
       this.#targetApp.drawingView.fitToContent();
     }
-
-    let schema = urlParams.get('schema');
 
     if (schema) {
       if (!isURL(schema)) {
