@@ -59,21 +59,6 @@ export class URLParamsHandler<Schema> {
     if (sequence) {
       this.#targetApp.drawDotBracket(sequence, dotBracket ?? '');
 
-      let bases = [...this.#targetApp.drawing.bases];
-
-      bases.slice(0, bases.length - 20).forEach((b, i) => {
-        let p = i + 1;
-        p % 20 == 0 ? this.#targetApp.drawing.number(b, p) : {}
-      });
-
-      if (bases.length > 0) {
-        this.#targetApp.drawing.number(bases[0], 1);
-      }
-
-      if (bases.length >= 4) {
-        this.#targetApp.drawing.number(bases[bases.length - 1], bases.length);
-      };
-
       // color according to data after drawing the structure
       this.#dataHandler.handle(urlParams);
 
