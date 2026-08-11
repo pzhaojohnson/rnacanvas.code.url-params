@@ -6,78 +6,78 @@ describe('`class ColorGradient`', () => {
     var colorGradient = new ColorGradient();
 
     // red by default
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 100%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(0deg 100% 81.5%)');
-    expect(colorGradient.at(0.5)).toBe('hsl(0deg 100% 75%)');
-    expect(colorGradient.at(1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,255,255)');
+    expect(colorGradient.at(0.37)).toBe('rgb(255,161,161)');
+    expect(colorGradient.at(0.5)).toBe('rgb(255,128,128)');
+    expect(colorGradient.at(1)).toBe('rgb(255,0,0)');
 
     // below zero
-    expect(colorGradient.at(-0.1)).toBe('hsl(0deg 100% 100%)');
+    expect(colorGradient.at(-0.1)).toBe('rgb(255,255,255)');
 
     // above one
-    expect(colorGradient.at(2)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(2)).toBe('rgb(255,0,0)');
 
     // explicitly red
     var colorGradient = new ColorGradient('red');
 
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 100%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(0deg 100% 81.5%)');
-    expect(colorGradient.at(1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,255,255)');
+    expect(colorGradient.at(0.37)).toBe('rgb(255,161,161)');
+    expect(colorGradient.at(1)).toBe('rgb(255,0,0)');
 
     // reverse red
     var colorGradient = new ColorGradient('red', { reverse: true });
 
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 50%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(0deg 100% 68.5%)');
-    expect(colorGradient.at(1)).toBe('hsl(0deg 100% 100%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,0,0)');
+    expect(colorGradient.at(0.37)).toBe('rgb(255,94,94)');
+    expect(colorGradient.at(1)).toBe('rgb(255,255,255)');
 
     // below zero
-    expect(colorGradient.at(-0.1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(-0.1)).toBe('rgb(255,0,0)');
 
     // above one
-    expect(colorGradient.at(2)).toBe('hsl(0deg 100% 100%)');
+    expect(colorGradient.at(2)).toBe('rgb(255,255,255)');
 
     // explicitly not reverse red
     var colorGradient = new ColorGradient('red', { reverse: false });
 
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 100%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(0deg 100% 81.5%)');
-    expect(colorGradient.at(1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,255,255)');
+    expect(colorGradient.at(0.37)).toBe('rgb(255,161,161)');
+    expect(colorGradient.at(1)).toBe('rgb(255,0,0)');
 
     // RNAfold color gradient
     var colorGradient = new ColorGradient('RNAfold');
 
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 50%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(88.8deg 100% 50%)');
-    expect(colorGradient.at(0.5)).toBe('hsl(120deg 100% 50%)');
-    expect(colorGradient.at(1)).toBe('hsl(240deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,0,0)');
+    expect(colorGradient.at(0.37)).toBe('rgb(133,255,0)');
+    expect(colorGradient.at(0.5)).toBe('rgb(0,255,0)');
+    expect(colorGradient.at(1)).toBe('rgb(0,0,255)');
 
     // below zero
-    expect(colorGradient.at(-0.1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(-0.1)).toBe('rgb(255,0,0)');
 
     // above one
-    expect(colorGradient.at(2)).toBe('hsl(240deg 100% 50%)');
+    expect(colorGradient.at(2)).toBe('rgb(0,0,255)');
 
     // reverse RNAfold
     var colorGradient = new ColorGradient('RNAfold', { reverse: true });
 
-    expect(colorGradient.at(0)).toBe('hsl(240deg 100% 50%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(151.2deg 100% 50%)');
-    expect(colorGradient.at(0.5)).toBe('hsl(120deg 100% 50%)');
-    expect(colorGradient.at(1)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(0,0,255)');
+    expect(colorGradient.at(0.37)).toBe('rgb(0,255,133)');
+    expect(colorGradient.at(0.5)).toBe('rgb(0,255,0)');
+    expect(colorGradient.at(1)).toBe('rgb(255,0,0)');
 
     // below zero
-    expect(colorGradient.at(-0.1)).toBe('hsl(240deg 100% 50%)');
+    expect(colorGradient.at(-0.1)).toBe('rgb(0,0,255)');
 
     // above one
-    expect(colorGradient.at(2)).toBe('hsl(0deg 100% 50%)');
+    expect(colorGradient.at(2)).toBe('rgb(255,0,0)');
 
     // explicitly not reverse RNAfold
     var colorGradient = new ColorGradient('RNAfold', { reverse: false });
 
-    expect(colorGradient.at(0)).toBe('hsl(0deg 100% 50%)');
-    expect(colorGradient.at(0.37)).toBe('hsl(88.8deg 100% 50%)');
-    expect(colorGradient.at(0.5)).toBe('hsl(120deg 100% 50%)');
-    expect(colorGradient.at(1)).toBe('hsl(240deg 100% 50%)');
+    expect(colorGradient.at(0)).toBe('rgb(255,0,0)');
+    expect(colorGradient.at(0.37)).toBe('rgb(133,255,0)');
+    expect(colorGradient.at(0.5)).toBe('rgb(0,255,0)');
+    expect(colorGradient.at(1)).toBe('rgb(0,0,255)');
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "@rnacanvas/code.url-params",
-  "version": "12.0.0",
+  "version": "12.0.1",
   "description": "Handle URL parameters",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "dependencies": {
     "@rnacanvas/draw.bases": "^9.2.0",
     "@rnacanvas/utilities": "^7.2.0",
-    "@rnacanvas/value-check": "^2.6.1"
+    "@rnacanvas/value-check": "^2.6.1",
+    "@svgdotjs/svg.js": "^3.2.8"
   }
 }

@@ -1,3 +1,5 @@
+import { Color } from '@svgdotjs/svg.js';
+
 export class ColorGradient {
   #descriptor;
 
@@ -17,8 +19,8 @@ export class ColorGradient {
    * Setting the `reverse` option to true causes 1.0 to correspond to the beginning of the color gradient,
    * and vice versa.
    *
-   * Returns the color along the color gradient as an HSL string
-   * that can directly set to be the value of an SVG attribute.
+   * Returns the calculated color as an RGB string
+   * that can be directly used as an SVG attribute value.
    */
   at(place: number): string {
     if (place < 0) {
@@ -57,7 +59,10 @@ export class ColorGradient {
       }
     }
 
-    return `hsl(${degree}deg ${saturation}% ${luminance}%)`;
+    let color = new Color(degree, saturation, luminance, 'hsl');
+
+    // don't return in HSL format (InkScape can't handle HSL colors, for instance)
+    return color.toRgb();
   }
 }
 
